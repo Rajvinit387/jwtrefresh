@@ -40,7 +40,7 @@ public class jwtconfig {
         http.csrf(csrf -> csrf.disable())
         .cors(cors-> cors.disable())
         .authorizeHttpRequests(auth-> auth.requestMatchers("/home/**")
-        .authenticated().requestMatchers("/auth/login").permitAll().requestMatchers("/auth/create-user").permitAll().requestMatchers("/auth/refreshtoken").permitAll().anyRequest().authenticated())
+        .authenticated().requestMatchers("/auth/login").permitAll().requestMatchers("/auth/create-user").permitAll().requestMatchers("/auth/refreshtoken").permitAll().requestMatchers("/auth/expiretoken").permitAll().anyRequest().authenticated())
         .exceptionHandling(ex-> ex.authenticationEntryPoint(point))
         .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         ;

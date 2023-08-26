@@ -111,6 +111,7 @@ public class AuthController {
       User user= refreshToken.getUser();
       String s= this.helper.generateToken(user);
        JwtResponse jwtResponse= new JwtResponse();
+       jwtResponse.setRefreshtokenString(request.getRefreshtoken());
        jwtResponse.setJwttokenString(s);
        jwtResponse.setUsernameString(user.getEmailString());
        return  jwtResponse;
@@ -120,7 +121,7 @@ public class AuthController {
     public String expiretoken(@RequestBody Refreshtokenrequest request1)
     {
         RefreshToken refreshToken2=	refreshtokenrepository.findByRefreshtokString(request1.getRefreshtoken()).get();
-        refreshToken2.setExpiryInstant("invalid");
+        refreshToken2.setExpiryInstant("Invalid");
          this.refreshtokenrepository.save(refreshToken2);
         return  "token expired successfully";
     }
